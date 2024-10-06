@@ -79,22 +79,30 @@
               <label for="">Short Name</label>
               <input type="text" [(ngModel)]="productObj.productShortName" class="form-control">
             </div>
-            <div class="col-6">
-              <label for="">Delivery Time Span</label>
-              <input type="text" [(ngModel)]="productObj.deliveryTimeSpan" class="form-control">
+            <div class="row">
+              <div class="col-6">
+                <label for="">Category</label>
+                <select [(ngModel)]="productObj.productShortName" class="form-select">
+                  <option *ngFor="let cate of categoryList" [value]="cate.categoryId">{{cate.categoryName}}</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <label for="">Delivery Time Span</label>
+                <input type="text" [(ngModel)]="productObj.deliveryTimeSpan" class="form-control">
+              </div>
             </div>
-            <div class="col-6">
-              <label for="">Category</label>
-              <input type="text" [(ngModel)]="productObj.categoryId" class="form-control">
+            <div class="row">
+              <div class="col-12">
+                <label for="">Image URL</label>
+                <input type="text" [(ngModel)]="productObj.productImageUrl" class="form-control">
+              </div>
             </div>
-            <div class="col-12">
-              <label for="">Image URL</label>
-              <input type="text" [(ngModel)]="productObj.productImageUrl" class="form-control">
-            </div>
-            <div class="col-12">
-              <label for="">Description</label>
-              <textarea rows="4" type="text" [(ngModel)]="productObj.productDescription" class="form-control" ></textarea>
-            </div>
+            <div class="row">
+                <div class="col-12">
+                  <label for="">Description</label>
+                  <textarea rows="4" type="text" [(ngModel)]="productObj.productDescription" class="form-control" ></textarea>
+                </div>
+              </div>
           </div>
       </div>
     </div>
