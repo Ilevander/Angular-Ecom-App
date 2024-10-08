@@ -58,9 +58,9 @@ export class ProductsComponent implements OnInit{
   }
 
   onSave() {
-       this.productService.saveProduct(this.productObj).subscribe((res:any)=> {
+       this.productService.updateProduct(this.productObj).subscribe((res:any)=> {
          if(res.result){
-           alert("Product Created Successfully");
+           alert("Product Updated Successfully");
            this.getProducts()
          }else{
            alert(res.message)
@@ -68,7 +68,32 @@ export class ProductsComponent implements OnInit{
        })
   }
 
+  onUpdate() {
+    this.productService.saveProduct(this.productObj).subscribe((res:any)=> {
+      if(res.result){
+        alert("Product Created Successfully");
+        this.getProducts()
+      }else{
+        alert(res.message)
+      }
+    })
+  }
+
   onEdit(item: any) {
      this.productObj = item;
+  }
+
+  onDelete(item: any) {
+      const isDelete = confirm('Are you sure you want to delete this product?');
+      if (isDelete) {
+        this.productService.deleteProduct(item.productId).subscribe((res:any)=> {
+          if(res.result){
+            alert("Product Deleted Successfully");
+            this.getProducts()
+          }else{
+            alert(res.message)
+          }
+        })
+      }
   }
 }
