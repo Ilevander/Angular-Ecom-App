@@ -12,31 +12,6 @@
         </div>
 
       </div>
-      <div class="card-body">
-           <div class="row">
-             <div class="col-3" *ngFor="let product of productsList">
-               <div class="card" >
-                 <img [src]="product.productImageUrl" class="card-img-top" alt="Card image">
-                 <div class="card-body">
-                   <h4 class="card-title">{{product.productName}}</h4>
-                   <p class="card-text">{{product.categoryName}}</p>
-                   <a href="#" class="btn btn-primary">Go somewhere</a>
-                 </div>
-               </div>
-             </div>
-             <div class="col-3">
-               <div class="card" >
-                 <img src="..." class="card-img-top" alt="...">
-                 <div class="card-body">
-                   <h5 class="card-title">Card title</h5>
-                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                   <a href="#" class="btn btn-primary">Go somewhere</a>
-                 </div>
-               </div>
-             </div>
-
-           </div>
-      </div>
     </div>
   </div>
   <div class="col-4" *ngIf="isSidePanelVisible">
@@ -99,7 +74,8 @@
                 <button class="btn btn-success">Reset</button>
               </div>
               <div class="col-6">
-                <button class="btn btn-success" (click)="onSave()">Create Product</button>
+                <button class="btn btn-success" *ngIf="productObj.productId == 0" (click)="onSave()">Create Product</button>
+                <button class="btn btn-success" *ngIf="productObj.productId !== 0" (click)="onSave()">Update Product</button>
               </div>
             </div>
           </div>

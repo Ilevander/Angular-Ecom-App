@@ -67,4 +67,8 @@ export class ProductsComponent implements OnInit{
          }
        })
   }
+
+  onEdit(item: any) {
+     this.productObj = item;
+  }
 }
