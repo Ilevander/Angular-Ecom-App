@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RouterLink, RouterOutlet} from '@angular/router';
+import {ProductService} from '../../services/product/product.service';
 
 @Component({
   selector: 'app-layout',
