@@ -3,13 +3,15 @@ import {ActivatedRoute} from '@angular/router';
 import {ProductService} from '../../services/product/product.service';
 import {CommonModule, NgStyle} from '@angular/common';
 import {ToastrService} from 'ngx-toastr';
+import {CardComponent} from '../../shared/components/card/card.component';
 
 @Component({
   selector: 'app-category-web-products',
   standalone: true,
   imports: [
     NgStyle,
-    CommonModule
+    CommonModule,
+    CardComponent
   ],
   templateUrl: './category-products.component.html',
   styleUrl: './category-products.component.css'
