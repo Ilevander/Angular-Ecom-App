@@ -1,16 +1,20 @@
 import {Component, OnInit} from '@angular/core';
+import {CommonModule, NgForOf} from "@angular/common";
+import {Router, RouterLink} from '@angular/router';
 import {ProductService} from '../../services/product/product.service';
-import {CommonModule} from '@angular/common';
-import {Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 
 @Component({
-  selector: 'app-landing',
+  selector: 'app-web-products',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterLinkActive, RouterOutlet],
-  templateUrl: './landing.component.html',
-  styleUrl: './landing.component.css'
+    imports: [
+        NgForOf,
+      CommonModule,
+      RouterLink
+    ],
+  templateUrl: './web-products.component.html',
+  styleUrl: './web-products.component.css'
 })
-export class LandingComponent implements OnInit {
+export class WebProductsComponent implements OnInit{
 
   productList: any [] = [];
   categoryList: any [] = [];
@@ -32,11 +36,11 @@ export class LandingComponent implements OnInit {
 
   getAllCategory(){
     this.productService.getCategory().subscribe((res:any)=> {
-        this.categoryList = res.data;
+      this.categoryList = res.data;
     })
   }
 
   navigateToProducts(id:number) {
-      this.router.navigate(['/products' , id])
+    this.router.navigate(['/products' , id])
   }
 }

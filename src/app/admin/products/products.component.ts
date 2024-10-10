@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {ProductService} from '../../services/product/product.service';
 
 @Component({
-  selector: 'app-products',
+  selector: 'app-web-products',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './products.component.html',
