@@ -12,18 +12,26 @@ import {CommonModule} from '@angular/common';
 export class LandingComponent implements OnInit {
 
   productList: any [] = [];
+  categoryList: any [] = [];
 
   constructor(private productService: ProductService) {
   }
 
   ngOnInit() {
     this.getAllProducts();
+    this.getAllCategory();
   }
 
   getAllProducts(): void {
     this.productService.getProducts().subscribe((res:any) => {
       debugger;
       this.productList = res.data;
+    })
+  }
+
+  getAllCategory(){
+    this.productService.getCategory().subscribe((res:any)=> {
+        this.categoryList = res.data;
     })
   }
 
