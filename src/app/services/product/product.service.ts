@@ -16,6 +16,10 @@ export class ProductService {
     return this.http.get(Constant.API_END_POINT + Constant.METHODS.GET_ALL_CATEGORY);
   }
 
+  createCategory(obj: any): Observable<any> {
+    return this.http.post<any>(Constant.API_END_POINT + Constant.METHODS.CREATE_NEW_CATEGORY, obj);
+  }
+
   getProductsByCategory(id: number){
     return this.http.get(Constant.API_END_POINT + Constant.METHODS.GET_ALL_PRODUCT_BY_CATEGORY + id);
   }

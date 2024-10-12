@@ -8,5 +8,6 @@ export const Constant = {
     UPDATE_PRODUCT: 'UpdateProduct',
     DELETE_PRODUCT: 'DeleteProductById?id=',
     ADD_TO_CART: 'ADDTOCART',
+    CREATE_NEW_CATEGORY: 'CreateNewCategory',
   }
 }

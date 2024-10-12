@@ -1,32 +1,113 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProductService} from '../../services/product/product.service';
 import {map, Observable} from 'rxjs';
 import { CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {ButtonModule} from 'primeng/button';
+import {TableModule} from 'primeng/table';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-categories',
   standalone: true,
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ButtonModule,
+    TableModule
   ],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.css'
 })
 
-export class CategoriesComponent {
+export class CategoriesComponent implements OnInit{
 
-  products$: Observable<any>;
+  products$: Observable<any> | undefined;
+  isSidePanel: boolean = false;
+  categoryObj: categoryObject = new categoryObject();
+  isApiCallInProgress: boolean = false;
 
-  constructor(private productService: ProductService)  {
+  constructor(private productService: ProductService , private toaster: ToastrService)  {
+    this.products$ = this.productService.getCategory().pipe(
+      map((item:any) => {
+        return item.data;
+      })
+    );
+  }
+  ngOnInit() {
+    this.getAllCategory();
+  }
+
+    getAllCategory() {
       this.products$ = this.productService.getCategory().pipe(
-        map((item:any) => {
+        map((item: any) => {
           return item.data;
         })
       );
+    }
+
+    saveCategory() {
+      if (!this.isApiCallInProgress) {
+        this.isApiCallInProgress = true;
+        this.productService.createCategory(this.categoryObj).subscribe((res: any) => {
+          if (res.result) {
+            this.isApiCallInProgress = false;
+            this.toaster.success('Category Created Successfully');
+            this.reset();
+            this.getAllCategory();
+          } else {
+            this.isApiCallInProgress = false;
+            this.toaster.error(res.message);
+          }
+        }, (err: any) => {
+          this.isApiCallInProgress = false;
+          this.toaster.error(err.message);
+        })
+      }
+    }
+
+    updateCategory() {
+      if (!this.isApiCallInProgress) {
+        this.isApiCallInProgress = true;
+        this.productService.createCategory(this.categoryObj).subscribe((res: any) => {
+          if (res.result) {
+            this.isApiCallInProgress = false;
+            this.toaster.success('Category Updated Successfully');
+            this.reset();
+            this.getAllCategory();
+          } else {
+            this.isApiCallInProgress = false;
+            this.toaster.error(res.message);
+          }
+        }, (err: any) => {
+          this.isApiCallInProgress = false;
+          this.toaster.error(err.message);
+        })
+      }
+    }
+
+    onEdit(item: any) {
+      this.categoryObj = item;
+      this.isSidePanel = true;
+    }
+
+    onDelete() { }
+
+    reset() {
+      this.categoryObj = new categoryObject();
+      this.isSidePanel = false;
+    }
   }
 
-  getAllCategory(){
+  export class categoryObject {
+    categoryId: number;
+    categoryName: string;
+    parentCategoryId: number;
 
-  }
+    constructor() {
+      this.categoryId = 0;
+      this.categoryName = '';
+      this.parentCategoryId = 0;
+    }
 
 }
