@@ -67,4 +67,12 @@ export class ProductService {
   cancelOrder(saleId: number): Observable<any[]> {
     return this.http.get<any[]>(Constant.API_END_POINT + Constant.METHODS.CANCEL_ORDER_BY_SALE_ID + saleId);
   }
+
+  updateProfile(obj: any): Observable<any> {
+    return this.http.put<any>(Constant.API_END_POINT + Constant.METHODS.UPDATE_PROFILE, obj);
+  }
+
+  getCustomerById(custId: number): Observable<any[]> {
+    return this.http.get<any[]>(Constant.API_END_POINT + Constant.METHODS.GET_CUSTOMER_BY_ID + custId);
+  }
 }
