@@ -43,4 +43,16 @@ export class ProductService {
   addToCart(obj: any): Observable<any> {
     return this.http.post<any>(Constant.API_END_POINT + Constant.METHODS.ADD_TO_CART, obj);
   }
+
+  getCartDataByCustId(custId: number): Observable<any[]> {
+    return this.http.get<any[]>(Constant.API_END_POINT + Constant.METHODS.GET_CART_BY_CUST + custId);
+  }
+
+  placeOrder(obj: any): Observable<any> {
+    return this.http.post<any>(Constant.API_END_POINT + Constant.METHODS.PLACE_ORDER, obj);
+  }
+
+  removeProductByCartId(cartId: number): Observable<any[]> {
+    return this.http.get<any[]>(Constant.API_END_POINT + Constant.METHODS.REMOVE_CART + cartId);
+  }
 }
