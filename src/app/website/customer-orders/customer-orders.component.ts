@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../../services/product/product.service';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
@@ -8,6 +7,7 @@ import { ConfirmationService } from 'primeng/api';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { jsPDF } from 'jspdf';
+import {ProductService} from '../../services/product/product.service';
 
 @Component({
   selector: 'app-customer-orders',

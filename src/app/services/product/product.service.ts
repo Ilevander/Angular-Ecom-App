@@ -55,4 +55,16 @@ export class ProductService {
   removeProductByCartId(cartId: number): Observable<any[]> {
     return this.http.get<any[]>(Constant.API_END_POINT + Constant.METHODS.REMOVE_CART + cartId);
   }
+
+  getAllSalesByCustomerId(custId: number): Observable<any[]> {
+    return this.http.get<any[]>(Constant.API_END_POINT + Constant.METHODS.GET_ALL_SALE_BY_CUSTOMER_ID + custId);
+  }
+
+  openSaleBySaleId(saleId: number): Observable<any[]> {
+    return this.http.get<any[]>(Constant.API_END_POINT + Constant.METHODS.OPEN_SALE_BY_SALE_ID + saleId);
+  }
+
+  cancelOrder(saleId: number): Observable<any[]> {
+    return this.http.get<any[]>(Constant.API_END_POINT + Constant.METHODS.CANCEL_ORDER_BY_SALE_ID + saleId);
+  }
 }

@@ -19,5 +19,8 @@ export const Constant = {
     GET_CART_BY_CUST: 'GetCartProductsByCustomerId?id=',
     PLACE_ORDER: 'PlaceOrder',
     REMOVE_CART: 'DeleteProductFromCartById?ID=',
+    GET_ALL_SALE_BY_CUSTOMER_ID: 'GetAllSaleByCustomerId?id=',
+    OPEN_SALE_BY_SALE_ID: 'OpenSaleBySaleId?saleId=',
+    CANCEL_ORDER_BY_SALE_ID: 'cancelOrder?saleId=',
   }
 }
