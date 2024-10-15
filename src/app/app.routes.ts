@@ -8,6 +8,7 @@ import {CategoryProductsComponent} from './website/category-products/category-pr
 import {WebProductsComponent} from './website/web-products/web-products.component';
 import {CustomerOrdersComponent} from './website/customer-orders/customer-orders.component';
 import {CheckoutComponent} from './website/checkout/checkout.component';
+import {CartComponent} from './admin/cart/cart.component';
 
 export const routes: Routes = [
   {
@@ -32,6 +33,10 @@ export const routes: Routes = [
         path: 'products/:id',
         component: CategoryProductsComponent,
       },
+      {
+        path: 'cart',
+        component: CartComponent
+      }
     ]
   },
   {
