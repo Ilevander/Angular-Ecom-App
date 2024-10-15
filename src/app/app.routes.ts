@@ -9,6 +9,7 @@ import {WebProductsComponent} from './website/web-products/web-products.componen
 import {CustomerOrdersComponent} from './website/customer-orders/customer-orders.component';
 import {CheckoutComponent} from './website/checkout/checkout.component';
 import {CartComponent} from './admin/cart/cart.component';
+import {authGuard} from './shared/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -42,16 +43,19 @@ export const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
+    canActivate: [authGuard],
     title: 'Checkout'
   },
   {
     path: 'order-history',
     component: CustomerOrdersComponent,
+    canActivate: [authGuard],
     title: 'Your Orders'
   },
   {
       path: '',
       component: LayoutComponent,
+      canActivate: [authGuard],
           children: [
             {
               path: 'products',
