@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
@@ -13,7 +13,8 @@ import {OfferCardComponent} from '../../shared/components/offer-card/offer-card.
   templateUrl: './web-products.component.html',
   styleUrl: './web-products.component.css'
 })
-export class WebProductsComponent {
+export class WebProductsComponent implements OnInit{
+
   @ViewChild('productContainer') productContainer!: ElementRef;
   productList: any[] = [];
   categoryList: any[] = [];
