@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { OfferCardComponent } from '../../../shared/components/offer-card/offer-card.component';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import {ProductService} from '../../services/product/product.service';
 import {CardComponent} from '../../shared/components/card/card.component';
+import {OfferCardComponent} from '../../shared/components/offer-card/offer-card.component';
 @Component({
   selector: 'web-products-products',
   standalone: true,
