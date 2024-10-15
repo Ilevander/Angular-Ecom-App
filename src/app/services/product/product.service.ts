@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Constant} from '../constant/constant';
-import {Observable, Subject} from 'rxjs';
+import {map, Observable, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -74,5 +74,9 @@ export class ProductService {
 
   getCustomerById(custId: number): Observable<any[]> {
     return this.http.get<any[]>(Constant.API_END_POINT + Constant.METHODS.GET_CUSTOMER_BY_ID + custId);
+  }
+
+  getAllOffers(): Observable<any[]> {
+    return this.http.get<any[]>(Constant.API_END_POINT + Constant.METHODS.GET_ALL_OFFERS).pipe(map((res: any) => res.data));
   }
 }

@@ -24,5 +24,6 @@ export const Constant = {
     CANCEL_ORDER_BY_SALE_ID: 'cancelOrder?saleId=',
     UPDATE_PROFILE: 'UpdateProfile',
     GET_CUSTOMER_BY_ID: 'GetCustomerById?id=',
+    GET_ALL_OFFERS: 'GetAllOffers',
   }
 }
